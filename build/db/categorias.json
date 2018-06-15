@@ -1,0 +1,12 @@
+{
+    "categorias":[
+        {"id":0,"categoria":"Campo","url":"campo"},
+        {"id":1,"categoria":"Construção","url":"construcao"},
+        {"id":2,"categoria":"Duas e 4 Rodas","url":"duas-4-rodas"},
+        {"id":3,"categoria":"Eletro Eletrônicos","url":"eletro-eletronicos"},
+        {"id":4,"categoria":"Equipamentos de Proteção","url":"equipamentos-protecao"},
+        {"id":5,"categoria":"Lar","url":"lar"},
+        {"id":6,"categoria":"Natalinos","url":"natalinos"},
+        {"id":7,"categoria":"Pet e Vet","url":"pet-vet"}
+    ]
+}
