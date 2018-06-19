@@ -1,13 +1,41 @@
 import React, { Component, Fragment } from "react"
 import { Link } from 'react-router-dom'
 
+function FiltraProdutos(listaProdutos){
+    return function(x){
+        return x.img.toLowerCase().includes(listaProdutos) || !listaProdutos
+    }
+}
 class PageCategorias extends Component{
+    constructor(){
+        super()
+        this.state = {
+            pesquisa: ''
+        }
+        this.onCampoPesquisa = this.onCampoPesquisa.bind(this)
+    }
+    onCampoPesquisa(e){
+        this.setState({
+            pesquisa: e.target.value
+        })
+    }
     render(){
         return(
             <Fragment>
+                <form action="">
+                    <div className="uk-margin">
+                        <input className="uk-input" type="number" 
+                            ref="pesquisa" 
+                            onChange={(event) => this.onCampoPesquisa(event)}
+                            value={this.state.pesquisa} 
+                            placeholder="Pesquisar..." />
+                    </div>
+                </form>
                 <h1>{this.props.cat.map(res=> res.categoria)}</h1>
                 <div className="uk-grid uk-grid-match uk-child-width-1-1">
-                    {this.props.prod.slice(0, 20).map((v)=>
+                    {this.props.prod
+                        .filter(FiltraProdutos(this.state.pesquisa) )
+                        .slice(0, 20).map((v)=>
                         <div key={v.id} className="uk-margin-bottom">
                             <Link to={`/${v.categoria.url}/${v.url}`} className="uk-link-reset">
                                 <div className="uk-card uk-padding-remove bg-card uk-box-shadow-small uk-card-body uk-grid uk-grid-collapse" uk-grid="">
